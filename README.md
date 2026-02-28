@@ -6,7 +6,7 @@ A webcam tracks my hand movements, Python interprets the gestures, and an ESP32 
 
 ## Demo
 
-**YouTube demo:** *link will be added soon*  
+**YouTube demo:** *[Gesture-Controlled Robotic Hand Using Computer Vision](https://www.youtube.com/watch?v=_GSqwtdkvcs)*  
 **Media:** GIFs and images will be added here soon.
 
 
