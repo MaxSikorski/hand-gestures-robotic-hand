@@ -4,7 +4,7 @@ import serial
 import time
 
 
-SERIAL_PORT = "/dev/cu.usbserial-210" 
+SERIAL_PORT = "your_port" 
 BAUD = 115200
 
 ANGLE_OPEN = 30
