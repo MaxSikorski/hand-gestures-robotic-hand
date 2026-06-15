@@ -30,3 +30,6 @@ Plug the four servos into the PCA9685. The code expects them on these specific c
 Do not power the servos directly from the ESP32's 5V pin. You will fry the board or cause constant brownouts. 
 
 Connect your external 5V/6V power supply to the V+ and GND screw terminals on the PCA9685. Make sure you tie the ESP32's GND to the PCA9685's GND so they share a common ground.
+
+---
+**Previous Step: [Bill of Materials](BOM.md)** | **Next Step: [Software Setup](SOFTWARE.md)**

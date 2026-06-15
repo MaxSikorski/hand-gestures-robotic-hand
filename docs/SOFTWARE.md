@@ -31,3 +31,6 @@ Run the tracker:
 python main.py
 ```
 Hold your hand in front of the webcam. The robotic hand should mirror what you do.
+
+---
+**Previous Step: [Hardware Assembly & Wiring](ASSEMBLY.md)** | **Back to Home: [README](../README.md)**

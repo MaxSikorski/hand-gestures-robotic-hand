@@ -19,3 +19,6 @@ You need the following hardware to make it move:
 - Jumper wires.
 - Fishing line or braided thread to act as tendons for the fingers.
 - Elastic cord for the back of the fingers so they snap back open when the servos release tension.
+
+---
+**Next Step: [Hardware Assembly & Wiring](ASSEMBLY.md)**
