@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#000000">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="index.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="gsap.min.js"></script>
 </head>
 <body>
 
@@ -40,7 +40,7 @@
             <h1 class="hero-title">Hand Gesture Robotic Hand</h1>
             <p class="hero-subtitle">A brilliant open-source project by Marina (@mmm1712). Track your hand with a webcam, and watch a 3D-printed robotic arm mirror your movements in real-time.</p>
             <div class="hero-cta">
-                <a href="https://github.com/mmm1712/hand-gestures-robotic-hand" target="_blank" class="btn primary-btn">Marina's Original Repo</a>
+                <a href="https://github.com/mmm1712/hand-gestures-robotic-hand" target="_blank" class="btn primary-btn">Original Repo</a>
                 <a href="https://www.youtube.com/@Marinmandarine" target="_blank" class="btn secondary-btn">YouTube</a>
                 <a href="https://github.com/MaxSikorski/hand-gestures-robotic-hand" target="_blank" class="btn secondary-btn">Max's Repo</a>
             </div>
@@ -70,7 +70,7 @@
                 <h3 class="card-title">3D Printed Parts</h3>
                 <p class="card-desc">The hand itself is based on an existing open-source model. Grab the STL files for the fingers, palm, and wrist mounting directly from Thingiverse:</p>
                 <ul>
-                    <li><strong>Model:</strong> <a href="https://www.thingiverse.com/thing:2269115" target="_blank">InMoov Hand / Robotic Hand</a></li>
+                    <li><strong>Model:</strong> <a href="https://www.thingiverse.com/thing:2269115" target="_blank">Robotic Hand by Ryan Gross</a></li>
                     <li><strong>Creator:</strong> Ryan Gross (grossrc)</li>
                 </ul>
             </div>
@@ -82,7 +82,7 @@
                     <li><strong>PCA9685</strong> 16-channel PWM/servo driver (I2C)</li>
                     <li><strong>4x Servo Motors</strong> (MG996R or SG90)</li>
                     <li><strong>Webcam</strong> (Built-in or USB)</li>
-                    <li><strong>Power Supply:</strong> External 5V - 6V capable of handling at least 3 amps.</li>
+                    <li><strong>Power Supply:</strong> External 5V - 6V, roughly 3 amps or more (confirm against your servos' rating).</li>
                     <li><strong>Tendons:</strong> Fishing line or braided thread, and elastic cord for the return tension.</li>
                 </ul>
             </div>
@@ -112,7 +112,7 @@
                         <tr><td>SCL</td><td>GPIO 22</td></tr>
                     </tbody>
                 </table>
-                <p class="card-desc">Plug the four servos into the PCA9685: <strong>Ch 0</strong> (Thumb), <strong>Ch 1</strong> (Index), <strong>Ch 2</strong> (Middle), and <strong>Ch 3</strong> (Ring + Pinky shared).</p>
+                <p class="card-desc">Plug the four servos into the PCA9685, matching the channels defined in the firmware: <strong>Ch 0</strong> (Middle), <strong>Ch 1</strong> (Thumb), <strong>Ch 2</strong> (Ring + Pinky shared), and <strong>Ch 3</strong> (Index).</p>
                 <p class="card-desc" style="margin-top: 16px; opacity: 1;">⚠️ Do not power the servos directly from the ESP32's 5V pin. Connect your external 5V/6V power supply directly to the V+ and GND screw terminals on the PCA9685. Tie the ESP32 GND and the PCA9685 GND together.</p>
             </div>
         </section>
@@ -139,7 +139,7 @@
 source venv/bin/activate
 pip install opencv-python mediapipe pyserial</div>
                 <p class="card-desc">Update the script with your ESP32's COM port, and run it:</p>
-                <div class="code-block">python main.py</div>
+                <div class="code-block">python hand_test.py</div>
                 <p class="card-desc">Hold your hand up to the webcam, and watch the robot mirror your movements!</p>
             </div>
         </section>
@@ -153,6 +153,17 @@ pip install opencv-python mediapipe pyserial</div>
 
     <!-- Scripts -->
     <script>
+        // Offline safety net: GSAP is vendored locally (gsap.min.js), but if it ever
+        // fails to load, reveal everything that starts hidden and stub out the animation
+        // calls so the page stays fully functional and never renders blank.
+        if (typeof gsap === "undefined") {
+            document.querySelectorAll(".hero-title, .hero-subtitle, .hero-cta, .card, .section-label")
+                .forEach(el => { el.style.opacity = 1; el.style.transform = "none"; });
+            const noop = () => api;
+            const api = { to: noop, from: noop, fromTo: noop, set: noop, timeline: () => api, restart: noop };
+            window.gsap = api;
+        }
+
         // Hamburger menu toggle
         const menuToggle = document.getElementById("menu-toggle");
         const navLinks = document.getElementById("nav-links");

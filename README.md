@@ -2,7 +2,7 @@
 
 *First things first: this is entirely Marina's (mmm1712) project. I am just a contributor cleaning up the documentation and structure so it's easier for others to build. All credit for the computer vision pipeline and the ESP32 integration goes to her.*
 
-[![YouTube Demo](https://img.youtube.com/vi/_GSqwtdkvcs/0.jpg)](https://www.youtube.com/watch?v=_GSqwtdkvcs)
+[![YouTube Demo](https://img.youtube.com/vi/_GSqwtdkvcs/hqdefault.jpg)](https://www.youtube.com/watch?v=_GSqwtdkvcs)
 > *Watch the YouTube Demo*
 
 A webcam tracks your hand movements. A Python script interprets those gestures and sends serial commands to an ESP32, which drives four servos to mirror your hand on a 3D-printed model. 
