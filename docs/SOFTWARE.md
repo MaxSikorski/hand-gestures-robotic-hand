@@ -28,7 +28,7 @@ Plug in the ESP32 and turn on the external power supply for the servos. You migh
 
 Run the tracker:
 ```bash
-python main.py
+python hand_test.py
 ```
 Hold your hand in front of the webcam. The robotic hand should mirror what you do.
 

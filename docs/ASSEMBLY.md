@@ -20,11 +20,11 @@ The PCA9685 talks to the ESP32 over I2C. Connect them like this:
 | SCL         | GPIO 22   |
 
 ### Servos
-Plug the four servos into the PCA9685. The code expects them on these specific channels:
-- Channel 0: Thumb
-- Channel 1: Index finger
-- Channel 2: Middle finger
-- Channel 3: Ring and pinky (shared)
+Plug the four servos into the PCA9685. The code expects them on these specific channels (this matches the `#define` lines at the top of `esp32/humanoid_hand/humanoid_hand.ino`):
+- Channel 0: Middle finger
+- Channel 1: Thumb
+- Channel 2: Ring and pinky (shared)
+- Channel 3: Index finger
 
 ### Power
 Do not power the servos directly from the ESP32's 5V pin. You will fry the board or cause constant brownouts. 
